@@ -1,5 +1,7 @@
 let upperInput = document.getElementById("upper-input")
 let lowerInput = document.getElementById("lower-input")
+//flag to check the last input is a number or not
+let isNumber = false
 
 for (let i = 0; i < document.querySelectorAll("button").length; i++) {
     document.querySelectorAll("button")[i].addEventListener("click", function () {
@@ -39,16 +41,12 @@ let calculate = {
 
 }
 
-//flag to check the last input is a number or not
-let isNumber = false
-
 function onClick(value) {
     //checking input value number or not
     if (isNaN(value) && value !== '.') {
 
         if (calculate.hasOwnProperty(value)) {
             calculate[value]()
-
         }
         //for square root (sqrt) ,square(sq) and 1/x
         else if (upperInput.value[0] == "s" || upperInput.value[1] == "/") {
@@ -62,7 +60,6 @@ function onClick(value) {
         }
         else if (!isNumber) {
             upperInput.value = upperInput.value.slice(0, -1) + value
-
         }
         //normal calculation
         else {
